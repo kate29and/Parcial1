@@ -1,16 +1,17 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
+#include <fstream>
 
 using namespace std;
 
-
 int main()
 {
-    int opc=0;
     int n=0;
     char ***Categ = nullptr;
-
+    char cc[15];
+    cout<<"Ingresar documento de identidad: ";
+    cin>>cc;
     cout<<"Ingresar numero de materias: ";
     cin>>n;
 
@@ -21,57 +22,60 @@ int main()
             Categ[i][j] = new char[10]; // memoria para dato
         }
     }
-    int s=0;
+    ofstream outputFile(cc); // modo escritura
 
-    char m[] = "Horas-Materias-Codigo-Horario-Creditos-";
-    char* m_ptr = m;
+    if (!outputFile) {
+        cout << "Error al crear archivo de salida" << endl;
+    }
+
     for (int i = 0; i < n + 1; i++) {
         for (int j = 0; j < 5; j++) {
             if (i == 0) {
-                for (int k = 0; *m_ptr != '-'; k++) {
-                    Categ[i][j][k] = *m_ptr; //apunta a m
-                    m_ptr++;
-                }
-                m_ptr++; // avanzar el puntero para saltar el espacio
-            }
-            else {
+
                 if (j == 0) {
-                    cout << "Ingrese horas de la materia " << i << ": ";
+                    char p[]="Materias";
+                    Categ[i][j]=p;
                 }
                 else if (j == 1) {
-                    cout << "Ingrese nombre de la materia " << i << ": ";
+                     char p[]="Codigo";
+                    Categ[i][j]=p;
                 }
                 else if (j == 2) {
-                    cout << "Ingrese codigo de la materia " << i << ": ";
+                    char p[]="Horario";
+                    Categ[i][j]=p;
                 }
                 else if (j == 3) {
+                    char p[]="Creditos";
+                    Categ[i][j]=p;
+                }
+
+            }
+            else {
+
+                if (j == 0) {
+                    cout << "Ingrese nombre de la materia " << i << ": ";
+                }
+                else if (j == 1) {
+                    cout << "Ingrese codigo de la materia " << i << ": ";
+                }
+                else if (j == 2) {
                     cout << "Ingrese horas semanales de la materia " << i << ": ";
                 }
-                else if (j == 4) {
+                else if (j == 3) {
                     cout << "Ingrese creditos de la materia " << i << ": ";
                 }
                 cin >> Categ[i][j];
+
+
             }
+            outputFile<< Categ[i][j] << ' ';
 
 
         }
+        outputFile << endl;
     }
 
-
-   /* for (int i = 0; i < n+1; i++) {
-        for (int j=0;j<5;j++){
-            if (i == 0) {
-                for (int k=0; m[s]!=' '; k++){
-                    Categ[i][j][k]=m[s];
-                    s++;
-                }
-            }
-            else {
-                Categ[i][j][0] = '*';
-            }
-        }
-    }*/
-
+    outputFile.close();
 
     for (int i = 0; i < n+1; i++) {
         for (int j = 0; j < 5; j++) {
