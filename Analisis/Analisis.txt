@@ -1,0 +1,9 @@
+Análisis 
+1. El primer código que va a plantar a plantearse es el registro de información que contiene número de materias a registrar, código de materia,, horas obligatorias a la semana y creditos. En el momento que se ingresa materias a registrar se definiría la dimensión del arreglo, esta información se guardaría en un archivo de texto que se va a nombrar con el número de el documento de identidad.
+2. Para elegir el horario se vuelve a ingresar el código de la materia y teniendo en cuenta las horas obligatorias se puede organizar de dos maneras:
+ Se mostrarán cierta cantidad de horarios en el que el usuario elija la que prefiere guardar en el archivo en esta opción los horarios se vuelven un poco más limitados.
+ Otra opción es mostrar el horario y ponerle un número a las áreas que se encuentren libres teniendo esto el usuario podrá elegir los números del horario de cada materia.
+De cualquiera de las dos formas que se realice el archivo se guardará con el número de documento de identidad acompañado de un h
+3. Calcular la suma de todos los créditos ingresados y multiplicarlos por tres (al hacer los cálculos nos damos cuenta que un crédito representa tres horas semanales, dos obligatorias y una empírica) y calcular las horas libres que tenemos restantes, si al realizar esta resta las horas obligatorias sobrepasan las horas empíricas le damos dos opciones al usuario la primera sería volver a ingresar las materias,  la segunda sería disminuir las horas de cada materia hasta que se logren acomodar al espacio disponible.
+La primero sería multiplicar los créditos por tres y a eso restarle las horas que tienen obligatorias.
+Se pueden ir llenando los bloques de a dos horas cada día hasta que se acaben las horas y seguir así con las materias que faltan y darle al usuario la opción de aceptar el horario o rechazarlo.
