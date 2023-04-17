@@ -41,8 +41,8 @@ int main()
         cout << "Error al crear archivo de salida" << endl;
     }
 
-    int s=5, hor=8;
-    for (int i = 0; i < n + 1; i++) {
+    int s=5, r=8;
+    for (int i = 0; i < r; i++) {
         for (int j = 0; j < s; j++) {
 
             if (i == 0) {
@@ -105,10 +105,10 @@ int main()
         outputFile << endl;
     }
     outputFile.close();
-    impri(hora,n,s+1);
+    impri(hora,r,s+1);
 
     liberar(Categ,n);
-    liberar(hora,n);
+    liberar(hora,r);
 }
 
 
