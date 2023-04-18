@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void memoria(char ***Categ,int n);
-void impri(char ***Categ,int n,int s);
+void llenar(char*** Categ,int n);
+void imprimir(char ***Categ,int n, char* cc);
 void regist(char ***Categ,int n, char cc[15]);
 void liberar(char ***Categ,int n);
 
@@ -25,172 +25,80 @@ int main()
     for (int i=0; i<n+1 ; i++){
         Categ[i] = new char*[5];//memoria para columnas
         for (int j = 0; j < 5; j++) {
-            Categ[i][j] = new char[10]; // memoria para dato
+            Categ[i][j] = new char[15]; // memoria para dato
         }
     }
+    llenar(Categ,n);
     regist(Categ,n,cc);
-    hora = new char**[n+1]; // memoria para filas
-    for (int i=0; i<n+1 ; i++){
+
+    hora = new char**[7]; // memoria para filas
+    for (int i=0; i<7 ; i++){
         hora[i] = new char*[6];//memoria para columnas
         for (int j = 0; j < 6; j++) {
             hora[i][j] = new char[10]; // memoria para dato
         }
     }
-    ofstream outputFile("x"); // modo escritura
-    if (!outputFile) {
-        cout << "Error al crear archivo de salida" << endl;
-    }
-
-    int s=5, r=8;
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < s; j++) {
-
-            if (i == 0) {
-
-                if (j == 0) {
-                    char p[]="Hora";
-                    hora[i][j]=p;
-                }
-                else if (j == 1) {
-                    char p[]="Lunes";
-                    hora[i][j]=p;
-                }
-                else if (j == 2) {
-                    char p[]="Martes";
-                    hora[i][j]=p;
-                }
-                else if (j == 3) {
-                    char p[]="Miercoles";
-                    hora[i][j]=p;
-                }
-                else if (j == 4) {
-                    char p[]="Jueves";
-                    hora[i][j]=p;
-                }
-                else if (j == 5) {
-                    char p[]="Viernes";
-                    hora[i][j]=p;
-                }
-            }
-            else if  (j==0) {
-
-                if (i==1){
-                    char p[]="08-10";
-                    hora[i][j]=p;
-                }
-                else if(i==2){
-                    char p[]="10-12";
-                    hora[i][j]=p;
-                }
-                else if(i==3){
-                    char p[]="12-14";
-                    hora[i][j]=p;
-                }
-                else if(i==4){
-                    char p[]="14-16";
-                    hora[i][j]=p;
-                }
-                else if(i==5){
-                    char p[]="16-18";
-                    hora[i][j]=p;
-                }
-            }
-            else if(j!=0) {
-
-                hora[i][j][1]='*';
-            }
-
-
-        }
-        outputFile << endl;
-    }
-    outputFile.close();
-    impri(hora,r,s+1);
+    llenar(hora,7);
 
     liberar(Categ,n);
-    liberar(hora,r);
-}
-
-
-
-
-void memoria(char ***Categ,int n){
-    Categ = new char**[n+1]; // memoria para filas
-    for (int i=0; i<n+1 ; i++){
-        Categ[i] = new char*[5];//memoria para columnas
-        for (int j = 0; j < 5; j++) {
-            Categ[i][j] = new char[10]; // memoria para dato
-        }
-    }
+    liberar(hora,7);
 }
 
 void regist(char ***Categ,int n, char cc[15]){
 
+    Categ[0][0]= "Materia        ";
+    Categ[0][1]= "Codigo         ";
+    Categ[0][2]= "Hora Teorica   ";
+    Categ[0][3]= "Hora Practica  ";
+    Categ[0][4]= "Creditos       ";
+
+    for (int i = 1; i < n + 1; i++) {
+
+        cout << "Ingrese nombre de la materia " << i << ": ";
+        cin>>Categ[i][0];
+
+        cout << "Ingrese codigo de la materia " << i << ": ";
+        cin>>Categ[i][1];
+
+        cout << "Ingrese horas teoricas" << i << ": ";
+        cin>>Categ[i][2];
+
+        cout << "Ingrese horas practicas " << i << ": ";
+        cin>>Categ[i][3];
+
+        cout << "Ingrese creditos de la materia " << i << ": ";
+        cin>>Categ[i][4];
+
+    }
+    imprimir(Categ,n,cc);
+}
+
+void imprimir(char*** Categ,int n, char* cc) {
     ofstream outputFile(cc); // modo escritura
     if (!outputFile) {
         cout << "Error al crear archivo de salida" << endl;
     }
-    int s=5;
-    for (int i = 0; i < n + 1; i++) {
-        for (int j = 0; j < s; j++) {
-            if (i == 0) {
-
-                if (j == 0) {
-                    char p[]="Materias";
-                    Categ[i][j]=p;
-                }
-                else if (j == 1) {
-                    char p[]="Codigo";
-                    Categ[i][j]=p;
-                }
-                else if (j == 2) {
-                    char p[]="Hte ";
-                    Categ[i][j]=p;
-                }
-                else if (j == 3) {
-                    char p[]="Hpr ";
-                    Categ[i][j]=p;
-                }
-                else if (j == 4) {
-                    char p[]="Creditos";
-                    Categ[i][j]=p;
-                }
+    for (int i = 0; i < n+1; i++) {
+        for (int j = 0; j < 5; j++) {
+            cout << " | ";
+            for (int k = 0; k < 15; k++) {
+                cout << Categ[i][j][k] ;
             }
-            else {
-
-                if (j == 0) {
-                    cout << "Ingrese nombre de la materia " << i << ": ";
-                }
-                else if (j == 1) {
-                    cout << "Ingrese codigo de la materia " << i << ": ";
-                }
-                else if (j == 2) {
-                    cout << "Ingrese horas teoricas" << i << ": ";
-                }
-                else if (j == 3) {
-                    cout << "Ingrese horas practicas " << i << ": ";
-                }
-                else if (j == 4) {
-                    cout << "Ingrese creditos de la materia " << i << ": ";
-                }
-                cin >> Categ[i][j];
-            }
-            outputFile<< Categ[i][j] << ' ';
+            outputFile<< Categ[i][j] << '| ';
         }
-        outputFile << endl;
+        cout << " | "<<endl;
     }
     outputFile.close();
-    impri(Categ,n,s);
+
 }
 
-
-void impri(char ***Categ,int n, int s){
-
+void llenar(char*** Categ,int n) {
     for (int i = 0; i < n+1; i++) {
-        for (int j = 0; j < s; j++) {
-            cout << Categ[i][j] << ' ';
+        for (int j = 0; j < 5; j++) {
+            for (int k = 0; k < 15; k++) {
+                Categ[i][j][k] = '*';
+            }
         }
-        cout << endl;
     }
 }
 
