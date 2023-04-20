@@ -7,7 +7,7 @@
 
 //void imprimirhorario(char*** horario);
 void llenar(char*** horario);
-void imprimir(char ***Matriz, int tam2, int tam, int slots);
+void imprimir(char ***Matriz, int tam2, int tam, int s);
 void formatotxt(char ***Materias, int Num, int paso, char *Caja);
 void liberador(char ***Materias, char ***horario, char *Caja, char *Cajahorario, int Num);
 void random(char ***horario, char ***Materias, int Num);
@@ -55,13 +55,11 @@ int main()
         Materias[i]=new char*[6];
 
         Materias[i][0] = new char[8];
+        cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
+        cin>>Materias[i][0];
 
-
-        if(i>0){
+       if(i>0){
             while(H!=false){
-
-                cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
-                cin>>Materias[i][0];
 
                 int a = conversor(Materias[i][0]);
 
@@ -69,6 +67,9 @@ int main()
                     int b = conversor(Materias[k][0]);
                     if(a==b){
                         cout<<"La materia ya fue ingresada, intente otra "<<endl;
+                        cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
+                        cin>>Materias[i][0];
+                        k=0;
                     }
                     else{
                         H=false;
@@ -77,10 +78,7 @@ int main()
                 }
             }
         }
-        else{
-            cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
-            cin>>Materias[i][0];
-        }
+
 
         cout<<endl;
         Materias[i][1] = new char[25];
@@ -141,6 +139,7 @@ int main()
         cout << "1. Una vez a la semana. " << endl;
         cout << "2. Dos veces a la semana. " << endl;
         cout << "3. Dos veces a la semana y laboratorio. " << endl;
+        cout << "4. Salir " << endl;
         cin>>l;
         if(l==1){
             cout << "-----------------CRONOGRAMA--------------------" << endl;
@@ -288,11 +287,24 @@ int main()
         break;
 
     }
+    opc=0;
+    cout<<"Desea almacenar su horario modificado "<<endl;
+    cout<<"1. Si"<<endl;
+    cout<<"2. No"<<endl;
+    cin>>opc;
+    if (opc==1){
+        documento2[0]='k';
+        cout<<"Doc2"<<documento2<<endl;
+        paso=-1;
+        formatohorariotxt(horario, paso, almacenhorario);
 
 
+        Archivo.open(documento2);
+        Archivo <<almacenhorario ;
+        Archivo.close();
+    }
     liberador(Materias, horario, almacenhorario, almacen, Num);
 }
-
 void formatohorariotxt(char ***horario, int paso, char *Cajahorario){
     for (int i = 0; i < 14; i++) {
         for (int b = 0; b < 6; b++) {
@@ -356,7 +368,6 @@ void random(char ***horario, char ***Materias, int Num){
 
             if(horario[hora][dia][0] == ' '){
 
-                cout<<"Funciona :D"<<endl;
                 Q++;
                 horario[hora][dia] = Materias[i][0];
                 rellenarArreglo(horario[hora][dia], 10,  ' ');
@@ -421,7 +432,7 @@ void imprimir(char ***Matriz, int tam2, int tam, int slots){
         for (int b = 0; b < tam; b++) {
             cout << " | ";
             for (int c = 0; c < slots; c++) {
-                cout<<Matriz[a][b][c]<< " ";
+                cout<<Matriz[a][b][c];
                 if (Matriz[a][b][c]=='\0') break;
             }
             cout<<" | ";
