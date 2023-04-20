@@ -219,25 +219,27 @@ void random(char ***horario, char ***Materias, int Num){
         int aux = (conversor(Materias[i][4])*3)-(conversor(Materias[i][2])+conversor(Materias[i][3]));
         cout<<"la operacion da: "<<aux<<endl;
 
+        for(int k=0;k<aux;k++){
+            for(int j = 0; j<5; j++){
+                int dia = 1+rand()%(6-1);
 
-        for(int j = 0; j<5; j++){
-            int dia = 1+rand()%(6-1);
+                int hora = 1+rand()%(14-1);
 
-            int hora = 1+rand()%(5-1);
+                cout<<dia<<" "<<hora<<endl;
 
-            cout<<dia<<" "<<hora<<endl;
+                if(horario[hora][dia][0] == ' '){
 
-            if(horario[hora][dia][0] == ' '){
+                    cout<<"Funciona :D"<<endl;
 
-                cout<<"Funciona :D"<<endl;
+                    horario[hora][dia] = Materias[i][0];
 
-                horario[hora][dia] = Materias[i][0];
-                imprimirhorario(horario);
 
-                break;
+                    break;
+                }
+
             }
-
         }
+        imprimirhorario(horario);
     }
 
 
