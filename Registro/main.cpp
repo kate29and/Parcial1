@@ -9,7 +9,7 @@ void llenar(char*** Categ,int n);
 void imprimir(char ***Categ,int n, char* cc);
 void regist(char ***Categ,int n, char cc[15]);
 void liberar(char ***Categ,int n);
-
+int conversor(char Dato[30]);
 int main()
 {
     int n=0;
@@ -59,24 +59,17 @@ void regist(char ***Categ,int n, char cc[15]){
         cout << "Ingrese codigo de la materia: " << i << ": ";
         cin>>Categ[i][0];
 
-        /*if(i<=1){
+        if(i<=1){
             for(int k=1;k<=i-1;k++){
-                cout<<Categ[k][0]<<" == "<<Categ[i][0]<<endl;
-                for(int j=1; j<10;j++){
-                    cout<<Categ[k][0][j]<<" == "<<Categ[i][0][j]<<endl;
-                if ((Categ[k][0][j])==Categ[i][0][j]){
-
-                    cout << "Ingrese codigo de la materia: " << i << ": ";
-                    cin>>Categ[i][0][j];
-                    k=1;
-
+                if(conversor(Categ[k][0])==conversor(Categ[i][0])){
+                    cout<<"hh";
                 }
                 else{
                     break;
                 }
-                }
             }
-        }*/
+       }
+
 
         cout << "Ingrese nombre de la materia: " << i << ": ";
         cin>>Categ[i][1];
@@ -93,7 +86,15 @@ void regist(char ***Categ,int n, char cc[15]){
     }
     imprimir(Categ,n,cc);
 }
+int conversor(char Dato[30]){
 
+    int n=0;
+    for(int i=0; Dato[i]!='\0'; i++){
+        n=n*10+(Dato[i]-'0');
+
+    }
+    return n;
+}
 void imprimir(char*** Categ,int n, char* cc) {
     ofstream outputFile(cc); // modo escritura
     if (!outputFile) {
@@ -132,4 +133,16 @@ void liberar(char ***Categ,int n){
         delete[] Categ[i];
     }
     delete[] Categ;
+}
+void Imprimir(char ***Materias, int Num,int tam){
+    for (int a = 0; a < Num; a++) {
+        for (int b = 0; b < tam; b++) {
+            for (int c = 0; c < 25; c++) {
+                cout<<Materias[a][b][c];
+                if (Materias[a][b][c]=='\0') break;
+            }
+            cout<<" | ";
+        }
+        cout<<endl;
+    }
 }
