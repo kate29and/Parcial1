@@ -36,16 +36,16 @@ int main()
 
     ///////////////Recepcion de datos por teclado////////////
 
-    cout<<"ingrese su numero de documento: ";
+    cout<<"Ingresa numero de documento: ";
     cin>>documento;
 
     documento2[0]+='H';
     for(int i = 1; i<12; i++){
         documento2[i] = documento[i-1];
     }
-    cout<<"documento dos "<<documento2<<endl;
 
-    cout<<"ingrese el numero de materias: ";
+
+    cout<<"Ingresa numero de materias: ";
     cin>>Num;
     //////////////// Matriz dinamica de Datos///////////////
 
@@ -55,10 +55,10 @@ int main()
         Materias[i]=new char*[6];
 
         Materias[i][0] = new char[8];
-        cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
+        cout<<"Ingresa codigo de la materia ["<<i+1<<"] : ";
         cin>>Materias[i][0];
 
-       if(i>0){
+        /*if(i>0){
             while(H!=false){
 
                 int a = conversor(Materias[i][0]);
@@ -77,24 +77,24 @@ int main()
 
                 }
             }
-        }
+        }*/
 
 
         cout<<endl;
         Materias[i][1] = new char[25];
-        cout<<"Ingrese el nombre de la materia : ";
+        cout<<"Ingresa nombre de la materia : ";
         cin>>Materias[i][1];
         cout<<endl;
         Materias[i][2] = new char[3];
-        cout<<"Ingrese Horas de clase teorica : ";
+        cout<<"Ingresa Horas de clase teorica : ";
         cin>>Materias[i][2];
         cout<<endl;
         Materias[i][3] = new char[3];
-        cout<<"Ingrese Horas de clase practica: ";
+        cout<<"Ingresa Horas de clase practica: ";
         cin>>Materias[i][3];
         cout<<endl;
         Materias[i][4] = new char[3];
-        cout<<"Ingrese el numero de creditos de la materia: ";
+        cout<<"Ingresa numero de creditos de la materia: ";
         cin>>Materias[i][4];
         cout<<endl;
     }
@@ -139,24 +139,21 @@ int main()
         cout << "1. Una vez a la semana. " << endl;
         cout << "2. Dos veces a la semana. " << endl;
         cout << "3. Dos veces a la semana y laboratorio. " << endl;
-        cout << "4. Salir " << endl;
+        cout << "4. Salir " << endl<< endl;
         cin>>l;
+
         if(l==1){
             cout << "-----------------CRONOGRAMA--------------------" << endl;
             cout << "Ingrese el primer dia que desea registrar: " << endl;
             cin >> dia;
             cout << "Ingrese el horario donde registrara la materia: " << endl;
-
             cin >> hora;
 
             if ((horario[hora-5][dia][0] == ' ') && (horario[hora-4][dia][0]== ' ')) {
                 cout << "Ingresa el codigo de la materia: ";
                 cin >> horario[hora-5][dia];
                 horario[hora-4][dia]=horario[hora-5][dia];
-
                 rellenarArreglo(horario[hora-5][dia], 10,  ' ');
-
-                //for(int i = 0; i<=2)
                 cout << endl;
 
             }
@@ -164,6 +161,7 @@ int main()
                 cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
             }
         }
+
         else if((l==2)||(l==3)){
             int dia2=0;
             cout << "-----------------CRONOGRAMA--------------------" << endl;
@@ -175,21 +173,24 @@ int main()
             cin >> hora;
 
             if (((horario[hora-5][dia][0] == ' ') && (horario[hora-4][dia][0]== ' '))&&((horario[hora-5][dia2][0] == ' ') && (horario[hora-4][dia2][0]== ' '))) {
-                cout << "Ingresa el codigo de la materia: ";
+                cout << "Ingresa el codigo de la materia: "<< endl;
                 cin >> horario[hora-5][dia];
                 horario[hora-4][dia]=horario[hora-5][dia];
                 horario[hora-4][dia2]=horario[hora-5][dia];
                 horario[hora-5][dia2]=horario[hora-5][dia];
                 if(l==3){
                     dia2=0;
-                    cout << "Ingrese laboratorio " << endl;
+                    cout << "Ingresa dia de laboratorio: " << endl;
                     cin >> dia2;
-                    cout << "Ingrese el hora de laboratorio: " << endl;
+                    cout << "Ingresa hora de laboratorio: " << endl;
                     cin >> hora;
                     if ((horario[hora-5][dia2][0] == ' ') && (horario[hora-4][dia2][0]== ' ')&& (horario[hora-3][dia2][0]== ' ')){
                         horario[hora-5][dia2]=horario[hora-5][dia];
                         horario[hora-4][dia2]=horario[hora-5][dia];
-                        horario[hora-2][dia2]=horario[hora-5][dia];
+                        horario[hora-3][dia2]=horario[hora-5][dia];
+                    }
+                    else{
+                        cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
                     }
                 }
 
@@ -224,27 +225,20 @@ int main()
     Archivo <<almacenhorario ;
     Archivo.close();
 
-    cout << "\nproceso de eleccion de horas de repaso"<<endl;
-
-    int opc=0;
-
+    cout << "\nProceso de eleccion de horas de repaso"<<endl;
     cout<<"Elige el metodo de asignacion de horas de repaso"<<endl;
 
 
-
+    int opc=0;
     cout<<"1. Manual(Falta adecuar). "<<endl;
     cout<<"2. Automatico(No recomendable)"<<endl;
     cin>>opc;
 
     switch(opc){
-
-
-
     case 1:
 
         imprimir(Materias, Num, 5, 25);
         imprimir(horario, 14, 6, 10);
-
         do {
             cout << "-----------------CRONOGRAMA--------------------" << endl;
             cout << "Ingrese el primer dia que desea registrar: " << endl;
@@ -258,53 +252,52 @@ int main()
             if (horario[hora][dia][0] == ' ') {
                 cout << "Ingresa el codigo de la materia: ";
                 cin >> horario[hora][dia];
-
                 rellenarArreglo(horario[hora][dia], 10,  ' ');
-
                 cout << endl;
                 imprimir(horario, 14, 6, 10);
             }
+
             else {
                 imprimir(Materias, Num, 5, 25);
                 cout<<endl;
                 imprimir(horario, 14, 6, 10);
                 cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
             }
-
-
             cout << "\nLa materia ha sido agendada. Presiona cualquier tecla para agendar otra materia\no '*' para terminar: ";
             cin >> eleccion;
             cout << endl;
 
         } while (eleccion != '*');
-
         break;
 
     case 2:
 
         random(horario, Materias, Num);
-
         break;
 
     }
+
     opc=0;
     cout<<"Desea almacenar su horario modificado "<<endl;
     cout<<"1. Si"<<endl;
     cout<<"2. No"<<endl;
     cin>>opc;
+
     if (opc==1){
         documento2[0]='k';
         cout<<"Doc2"<<documento2<<endl;
         paso=-1;
         formatohorariotxt(horario, paso, almacenhorario);
-
-
         Archivo.open(documento2);
         Archivo <<almacenhorario ;
         Archivo.close();
+
     }
+
     liberador(Materias, horario, almacenhorario, almacen, Num);
 }
+
+
 void formatohorariotxt(char ***horario, int paso, char *Cajahorario){
     for (int i = 0; i < 14; i++) {
         for (int b = 0; b < 6; b++) {
@@ -356,29 +349,21 @@ void random(char ***horario, char ***Materias, int Num){
 
         int aux = (conversor(Materias[i][4])*3)-(conversor(Materias[i][2])+conversor(Materias[i][3]));
         cout<<"la operacion da: "<<aux<<endl;
+        int s = 0;
+        while(s<aux){
 
-
-        int Q = 0;
-        while(Q<aux){
             int dia = 1+rand()%(6-1);
-
             int hora = 1+rand()%(14-1);
-
             cout<<dia<<" "<<hora<<endl;
 
             if(horario[hora][dia][0] == ' '){
-
-                Q++;
+                s++;
                 horario[hora][dia] = Materias[i][0];
                 rellenarArreglo(horario[hora][dia], 10,  ' ');
                 imprimir(horario, 14, 6, 10);
-
             }
-
         }
-
     }
-
 }
 
 
@@ -419,7 +404,6 @@ void llenar(char*** horario) {
         for (int j = 0; j < 6; j++) {
             cout << " | ";
             for (int k = 0; k < 10; k++) {
-
                 cout << horario[i][j][k] << " ";
             }
         }
@@ -427,11 +411,12 @@ void llenar(char*** horario) {
     }
 }*/
 
-void imprimir(char ***Matriz, int tam2, int tam, int slots){
+void imprimir(char ***Matriz, int tam2, int tam, int s){
+    cout<<endl<<endl;
     for (int a = 0; a < tam2; a++) {
         for (int b = 0; b < tam; b++) {
             cout << " | ";
-            for (int c = 0; c < slots; c++) {
+            for (int c = 0; c < s; c++) {
                 cout<<Matriz[a][b][c];
                 if (Matriz[a][b][c]=='\0') break;
             }
@@ -481,7 +466,3 @@ void liberador(char ***Materias, char ***horario, char *Cajahorario, char *Caja,
     Caja=nullptr;
     Cajahorario=nullptr;
 }
-
-
-
-
