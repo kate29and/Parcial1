@@ -135,65 +135,84 @@ int main()
 
     //(horario);
     imprimir(horario, 14, 6, 10);
-
+    int l=0;
     do {
-        cout << "-----------------CRONOGRAMA--------------------" << endl;
-        cout << "Ingrese el primer dia que desea registrar: " << endl;
-        cout << "1-Lunes" << endl;
-        cout << "2-Martes" << endl;
-        cout << "3-Miercole" << endl;
-        cout << "4-Jueves" << endl;
-        cout << "5-Viernes" << endl;
-        cin >> dia;
+        l=0;
+        cout << "1. Una vez a la semana. " << endl;
+        cout << "2. Dos veces a la semana. " << endl;
+        cout << "3. Dos veces a la semana y laboratorio. " << endl;
+        cin>>l;
+        if(l==1){
+            cout << "-----------------CRONOGRAMA--------------------" << endl;
+            cout << "Ingrese el primer dia que desea registrar: " << endl;
+            cin >> dia;
+            cout << "Ingrese el horario donde registrara la materia: " << endl;
 
-        cout << "Ingrese el segundo dia que desea registrar: " << endl;
-        cout << "1-Lunes" << endl;
-        cout << "2-Martes" << endl;
-        cout << "3-Miercole" << endl;
-        cout << "4-Jueves" << endl;
-        cout << "5-Viernes" << endl;
-        cin >> dia2;
+            cin >> hora;
 
-        cout << "Ingrese el horario donde registrara la materia: " << endl;
-        cout << "1-> 6" << endl;
-        cout << "2-> 7" << endl;
-        cout << "3-> 8" << endl;
-        cout << "4-> 9" << endl;
-        cout << "5-> 10" << endl;
-        cout << "6-> 11" << endl;
-        cout << "7-> 12" << endl;
-        cout << "8-> 13" << endl;
-        cout << "9-> 14" << endl;
-        cout << "10-> 15" << endl;
-        cout << "11-> 16" << endl;
-        cin >> hora;
+            if ((horario[hora-5][dia][0] == ' ') && (horario[hora-4][dia][0]== ' ')) {
+                cout << "Ingresa el codigo de la materia: ";
+                cin >> horario[hora-5][dia];
+                horario[hora-4][dia]=horario[hora-5][dia];
 
-        if (horario[hora][dia][0] == ' ' && horario[hora][dia2][0] == ' ') {
-            cout << "Ingresa el codigo de la materia: ";
-            cin >> horario[hora][dia];
+                rellenarArreglo(horario[hora-5][dia], 10,  ' ');
 
-            horario[hora+1][dia]=horario[hora][dia];
-            horario[hora+2][dia]=horario[hora][dia];
+                //for(int i = 0; i<=2)
+                cout << endl;
 
-            rellenarArreglo(horario[hora][dia], 10,  ' ');
-
-            horario[hora][dia2] = horario[hora][dia];
-            horario[hora+1][dia2]= horario[hora][dia2];
-            horario[hora+2][dia2]= horario[hora][dia2];
-            //for(int i = 0; i<=2)
-            cout << endl;
-            imprimir(horario, 14, 6, 10);
+            }
+            else {
+                cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
+            }
         }
-        else {
-            cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
+        else if((l==2)||(l==3)){
+            int dia2=0;
+            cout << "-----------------CRONOGRAMA--------------------" << endl;
+            cout << "Ingrese el primer dia que desea registrar: " << endl;
+            cin >> dia;
+            cout << "Ingrese el primer dia que desea registrar: " << endl;
+            cin >> dia2;
+            cout << "Ingrese el horario donde registrara la materia: " << endl;
+            cin >> hora;
+
+            if (((horario[hora-5][dia][0] == ' ') && (horario[hora-4][dia][0]== ' '))&&((horario[hora-5][dia2][0] == ' ') && (horario[hora-4][dia2][0]== ' '))) {
+                cout << "Ingresa el codigo de la materia: ";
+                cin >> horario[hora-5][dia];
+                horario[hora-4][dia]=horario[hora-5][dia];
+                horario[hora-4][dia2]=horario[hora-5][dia];
+                horario[hora-5][dia2]=horario[hora-5][dia];
+                if(l==3){
+                    dia2=0;
+                    cout << "Ingrese laboratorio " << endl;
+                    cin >> dia2;
+                    cout << "Ingrese el hora de laboratorio: " << endl;
+                    cin >> hora;
+                    if ((horario[hora-5][dia2][0] == ' ') && (horario[hora-4][dia2][0]== ' ')&& (horario[hora-3][dia2][0]== ' ')){
+                        horario[hora-5][dia2]=horario[hora-5][dia];
+                        horario[hora-4][dia2]=horario[hora-5][dia];
+                        horario[hora-2][dia2]=horario[hora-5][dia];
+                    }
+                }
+
+                rellenarArreglo(horario[hora-5][dia], 10,  ' ');
+
+                //for(int i = 0; i<=2)
+                cout << endl;
+
+            }
+            else {
+                cout<< "Ya esta ocupado el horario, intenta con otro. "<<endl;
+            }
         }
 
+        imprimir(horario, 14, 6, 10);
 
-        cout << "\nLa materia ha sido agendada. Presiona cualquier tecla para agendar otra materia\no '*' para terminar: ";
-        cin >> eleccion;
+
+
+
         cout << endl;
 
-    } while (eleccion != '*');
+    } while (l != 4);
 
     ////////GUARDAR TXT HORARIO////////
     char *almacenhorario= new char [1200];
@@ -230,25 +249,11 @@ int main()
         do {
             cout << "-----------------CRONOGRAMA--------------------" << endl;
             cout << "Ingrese el primer dia que desea registrar: " << endl;
-            cout << "1-Lunes" << endl;
-            cout << "2-Martes" << endl;
-            cout << "3-Miercole" << endl;
-            cout << "4-Jueves" << endl;
-            cout << "5-Viernes" << endl;
+
             cin >> dia;
 
             cout << "Ingrese el horario donde registrara la materia: " << endl;
-            cout << "1-> 6" << endl;
-            cout << "2-> 7" << endl;
-            cout << "3-> 8" << endl;
-            cout << "4-> 9" << endl;
-            cout << "5-> 10" << endl;
-            cout << "6-> 11" << endl;
-            cout << "7-> 12" << endl;
-            cout << "8-> 13" << endl;
-            cout << "9-> 14" << endl;
-            cout << "10-> 15" << endl;
-            cout << "11-> 16" << endl;
+
             cin >> hora;
 
             if (horario[hora][dia][0] == ' ') {
@@ -281,8 +286,6 @@ int main()
         random(horario, Materias, Num);
 
         break;
-
-
 
     }
 
