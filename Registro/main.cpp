@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -46,27 +47,47 @@ int main()
 
 void regist(char ***Categ,int n, char cc[15]){
 
-    Categ[0][0]= "Materia        ";
-    Categ[0][1]= "Codigo         ";
+
+    Categ[0][0]= "Codigo         ";
+    Categ[0][1]= "Materia        ";
     Categ[0][2]= "Hora Teorica   ";
     Categ[0][3]= "Hora Practica  ";
     Categ[0][4]= "Creditos       ";
 
     for (int i = 1; i < n + 1; i++) {
 
-        cout << "Ingrese nombre de la materia " << i << ": ";
+        cout << "Ingrese codigo de la materia: " << i << ": ";
         cin>>Categ[i][0];
 
-        cout << "Ingrese codigo de la materia " << i << ": ";
+        /*if(i<=1){
+            for(int k=1;k<=i-1;k++){
+                cout<<Categ[k][0]<<" == "<<Categ[i][0]<<endl;
+                for(int j=1; j<10;j++){
+                    cout<<Categ[k][0][j]<<" == "<<Categ[i][0][j]<<endl;
+                if ((Categ[k][0][j])==Categ[i][0][j]){
+
+                    cout << "Ingrese codigo de la materia: " << i << ": ";
+                    cin>>Categ[i][0][j];
+                    k=1;
+
+                }
+                else{
+                    break;
+                }
+                }
+            }
+        }*/
+
+        cout << "Ingrese nombre de la materia: " << i << ": ";
         cin>>Categ[i][1];
 
-        cout << "Ingrese horas teoricas" << i << ": ";
+        cout << "Ingrese horas teoricas:       " << i << ": ";
         cin>>Categ[i][2];
 
-        cout << "Ingrese horas practicas " << i << ": ";
+        cout << "Ingrese horas practicas:      " << i << ": ";
         cin>>Categ[i][3];
 
-        cout << "Ingrese creditos de la materia " << i << ": ";
+        cout << "Ingrese creditos de la materia: " << i << ": ";
         cin>>Categ[i][4];
 
     }

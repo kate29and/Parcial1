@@ -1,0 +1,7 @@
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/Materias.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/info2/Parcial1/build-Materias-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir

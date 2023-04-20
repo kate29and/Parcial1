@@ -9,8 +9,8 @@ int main() {
     int n = 2, dia = 0, hora = 0;
     char eleccion = ' ';
     char ***horario = nullptr;
-    horario = new char**[7];
-    for (int i = 0; i < 7; i++) {
+    horario = new char**[14];
+    for (int i = 0; i < 14; i++) {
         horario[i] = new char*[6];
         for (int j = 0; j < 6; j++) {
             horario[i][j] = new char[10];
@@ -24,35 +24,33 @@ int main() {
     horario[0][3]= "3.Miercole";
     horario[0][4]= "4.Jueves  " ;
     horario[0][5]= "5.Viernes " ;
-    horario[1][0]= "1.6-8     " ;
-    horario[2][0]= "2.8-10    " ;
-    horario[3][0]= "3.10-12   " ;
-    horario[4][0]= "4.12-14   " ;
-    horario[5][0]= "5.14-16   " ;
-    horario[6][0]= "6.16-18   " ;
+
+    horario[1][0]= "6         " ;
+    horario[2][0]= "7         " ;
+    horario[3][0]= "8         " ;
+    horario[4][0]= "9         " ;
+    horario[5][0]= "10        " ;
+    horario[6][0]= "11        " ;
+    horario[7][0]= "12        " ;
+    horario[8][0]= "13        " ;
+    horario[9][0]= "14        " ;
+    horario[10][0]="15        " ;
+    horario[11][0]="16        " ;
+    horario[12][0]="17        " ;
+    horario[13][0]="18        " ;
     imprimir(horario);
     do {
-        cout << "-----------------CRONOGRAMA--------------------" << endl;
+        cout << endl;
         cout << "Ingrese que dia desea registrar: " << endl;
-        cout << "1-Lunes" << endl;
-        cout << "2-Martes" << endl;
-        cout << "3-Miercole" << endl;
-        cout << "4-Jueves" << endl;
-        cout << "5-Viernes" << endl;
         cin >> dia;
 
-        cout << "Ingrese el horario donde registrara la materia: " << endl;
-        cout << "1-> 6-8" << endl;
-        cout << "2-> 8-10" << endl;
-        cout << "3-> 10-12" << endl;
-        cout << "4-> 12-14" << endl;
-        cout << "5-> 14-16" << endl;
-        cout << "6-> 16-18" << endl;
+        cout << endl;
+        cout << "Ingrese el horario donde registrara la materia: " << endl;        
         cin >> hora;
 
-        if (horario[dia][hora][0] == '*') {
+        if (horario[hora][dia][0] == '*') {
             cout << "Ingresa el codigo de la materia: ";
-            cin >> horario[dia][hora];
+            cin >> horario[hora][dia];
             cout << endl;
 
             imprimir(horario);
@@ -67,7 +65,7 @@ int main() {
         n++;
     } while (eleccion != '*');
 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 14; i++) {
         for (int j = 0; j < 6; j++) {
             delete[] horario[i][j];
         }
@@ -77,7 +75,7 @@ int main() {
 }
 
 void llenar(char*** horario) {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 14; i++) {
         for (int j = 0; j < 6; j++) {
             for (int k = 0; k < 10; k++) {
                 horario[i][j][k] = '*';
@@ -87,12 +85,12 @@ void llenar(char*** horario) {
 }
 
 void imprimir(char*** horario) {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 14; i++) {
         for (int j = 0; j < 6; j++) {
             cout << " | ";
             for (int k = 0; k < 10; k++) {
 
-                cout << horario[i][j][k] << " ";
+                cout << horario[i][j][k];
             }
         }
         cout << " | "<<endl;
