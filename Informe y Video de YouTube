@@ -1,4 +1,7 @@
-  INFORME
+Video de Youtube:
+https://youtu.be/bq9l_wIKJ1w
+  
+INFORME
 
 Primero empecé analizando el proyecto determinando cuáles eran las posibles soluciones que se podrían implementar teniendo en cuenta las restricciones impuestas y que  para que no cause daños el uso de memoria dinámica se tiene que borrar manualmente por el programador, después de tener en cuenta esto se observó si era factible trabajar con arreglos tridimensionales o bidimensionales después de realizar todo el análisis y enviarlo se empezó a trabajar en la parte de programación.
 Se empezó a desarrollar la primera parte la cual consistía en el registro de materias con sus respectivas características al principio se realizó una matriz la cual se encargada de guardar todos los datos de las materias, esta solo consistía en recibir información y guardarla en el archivo txt e imprimir de forma ordenada, para poder imprimir de forma ordenada se decidió llenar la matriz con asteriscos para que ocupara todos los espacios y se viera de una manera estética se le implementó una función para eliminar memoria. Se creó otro documento para ingresar horario y determinar que si fuera factible el desarrollo,  los usuarios se encargaban de ingresar el horario de las materias registradas pero sin unir lo con la parte de registro, para esta parte se creó otra matriz la cual se encargaba de empezar a ingresar los datos en los espacios disponibles para esto se utilizaba la primera posición del arreglo como parámetro de que estuviera libre, imprimir matriz y borrar memoria, un dato para tener en cuenta es que al momento de crearse la matriz se decidió crear una función para que no almacenará datos basura y no se viera afectada la información ingresada.
