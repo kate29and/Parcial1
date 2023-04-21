@@ -13,3 +13,9 @@ Para organizar la parte de horario para que quedara de una forma más ordenada y
 Algunas de las dificultades que presentó el código fue que en variadas ocasiones estaba llegando a imprimir código basura y teniendo en cuenta que se destino una función para llenar la matriz para que esto no pasará, fue complejo tratar de encontrar una solución, se supone que la función de relleno también iba a ayudar a que se viera más estético y organizado, pero se desencadenaron varios errores.
 En determinadas ocasiones el código se cerraba sin realizar todo el proceso para lo cual me devolvía y miraba que era lo que estaba haciendo mal aunque en algunas ocasiones no encontré cuál fue el error para que sucediera esto. Guardar la información de los archivos de texto fue las últimas cosas que se estaba implementando después de haber hecho tantos cambios.
 
+![1](https://user-images.githubusercontent.com/125136001/233528998-a7db5608-36f6-41bb-b9ff-e6adce77f55a.jpg)
+![2](https://user-images.githubusercontent.com/125136001/233529022-fca58110-f5a1-465f-ad90-d48c2a347b68.jpg)
+![3](https://user-images.githubusercontent.com/125136001/233529127-208118da-89b6-455d-905d-44524ebfdaac.jpg)
+![4](https://user-images.githubusercontent.com/125136001/233529260-563f20f6-4313-412e-bfae-02040e8bdb8b.jpg)
+![5](https://user-images.githubusercontent.com/125136001/233529166-a1f3d21b-b643-4c03-8561-82c61ba0ad9f.jpg)
+
